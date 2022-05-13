@@ -1,0 +1,112 @@
+.doughnut {
+   width: 90vh;
+   height: 90vh;
+   border: 2px solid rgba(68, 65, 65, 0.3);
+   position: relative;
+   border-radius: 500px;
+}
+
+.doughnut2 {
+   width: 34vw;
+   height: 70vh;
+   border: 2px solid rgba(68, 65, 65, 0.3);
+   position: relative;
+   border-radius: 500px;
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.item h2 {
+    text-align:center;
+    position: absolute;
+    line-height: 700px;
+    width: 100%;
+    color: white;
+}
+
+@-webkit-keyframes css {
+  to {
+    stroke-dashoffset: 160;
+  }
+}
+
+.line {
+    position: absolute;
+    height: 3px;
+    width: 600px;
+    background: linear-gradient(270deg, #DC25FA 50%, #9947F7 69%);
+}
+
+.line_perc {
+    position: absolute;
+    height: 3px;
+    width: 600px;
+    background: linear-gradient(270deg, #7417BD 5%, #100D83 40%, #9BF8F2 69%);
+}
+
+.circle_value {
+    position: absolute;
+    border-radius: 100%;
+    background: linear-gradient(80deg,  #7417BD 5%, #100D83 86%);
+    width: 3.4vw;
+    height: 6vh;
+}
+
+.circle_perc {
+    position: absolute;
+    border-radius: 100%;
+    width: 2.8vw;
+    height: 5vh;
+    border: 0.4vh solid #9BF8F2;
+    background: black;
+}
+
+.circle_perc_small {
+    position: absolute;
+    border-radius: 100%;
+    width: 2vw;
+    height: 4vh;
+    background: rgba(68, 65, 65);
+}
+
+@keyframes css {
+  to {
+    stroke-dashoffset: 160;
+  }
+}
+
+@-webkit-keyframes pulse {
+  0% { box-shadow:0 0 8px #ea4c89, inset 0 0 8px #ea4c89; }
+  50% { box-shadow:0 0 16px #ea4c89, inset 0 0 14px #ea4c89; }
+  100% { box-shadow:0 0 8px #ea4c89, inset 0 0 8px #ea4c89; }
+}
+
+.inner {
+  background-color:transparent;
+  width:300px;
+  height:300px;
+  border-radius:100%;
+  box-shadow: 0 0 8px #ea4c89, inset 0 0 8px #ea4c89;
+  -webkit-animation: pulse 2s linear 1s infinite;
+}
+.inner p {
+  display:block;
+  text-align: center;
+  line-height: 100px;
+  font-family:sans-serif;
+  font-weight:100;
+  font-size:24px;
+  color: #ea4c89;
+  text-shadow: 0 0 4px #ea4c89;
+}
+
+ @media screen and (max-width: 1200px) {
+
+ }
+

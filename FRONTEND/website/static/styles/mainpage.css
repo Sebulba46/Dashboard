@@ -1,0 +1,98 @@
+/* change navbar-brand color */
+.navbar a.navbar-brand {
+  color: white;
+}
+
+
+/* change navbar-toggler inside lines color (stroke) */
+.navbar-light span.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='purple' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  border-color: #6921B5;
+}
+
+.navbar-light {
+    justify-content: flex-end;
+    background-color: #1D1D3A;
+}
+
+.navbar-light .nav-item {
+    margin: -0.5rem 0.1rem -0.5rem;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: White;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 1vh;
+}
+
+.navbar-light .navbar-nav .nav-link:hover{
+    color: #6921B5;
+    transition: 0.4s;
+}
+
+.navbar-nav span {
+  margin-right: 1rem;
+}
+
+.navbar-light .nav-item {
+  position: relative;
+}
+
+
+.navbar-light .nav-item:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0.5rem;
+    width: 0;
+    border-bottom: 4px solid #6921B5;
+    transition: 0.4s;
+    margin-bottom: 0.2rem;
+    border-radius: 25px;
+}
+
+.navbar-light .nav-item:hover:before {
+  width: calc(100% - 2rem);
+}
+
+.scroll {
+    overflow: auto;
+    height: 92vh;
+    width: 100vw;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.cool_button {
+    position: absolute;
+    width: 3rem;
+    height: 2rem;
+    border-radius: 5px;
+    background: #1D1D3A;
+    color: white;
+    text-align: center;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background: #343c65;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .2)
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: #3498db;
+    height: 30vh;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5BACE2;
+}
+
+h3 {
+    color: white;
+}

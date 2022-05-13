@@ -1,0 +1,126 @@
+{% extends "base.html" %} {% block title %}Income Sources 2020{% endblock %}
+{% block content %}
+<head>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/Income Sources 2020.css') }}"/>
+    <style>
+        .item {
+            position: relative;
+            float: left;
+        }
+        svg {
+            -webkit-transform: rotate(90deg);
+            transform: scale(1, -1) rotate(90deg);
+        }
+
+        .circle_animation {
+        stroke-dasharray: 879.64594; /* this value is the pixel circumference of the circle */
+        stroke-dashoffset: 879.64594;
+        }
+
+        .html .circle_animation {
+            -webkit-animation: html 1s ease-out forwards;
+            animation: html 1s ease-out forwards;
+        }
+
+        @keyframes html {
+          to {
+            stroke-dashoffset: {{ 879.64594*(income_achieved/100) }};
+          }
+        }
+    </style>
+</head>
+
+    <form method="post" style="position: absolute; left: 1vw; top: 40vh; width: 400px; height: 60px">
+        <button class="cool_button" type="submit" name="submit_button" value="2020" style="margin-left: 1rem">2020</button>
+        <button class="cool_button" type="submit" name="submit_button" value="2021" style="margin-left: 5rem">2021</button>
+        <button class="cool_button" type="submit" name="submit_button" value="2022" style="margin-left: 9rem">2022</button>
+        <button class="cool_button" type="submit" name="submit_button" value="2023" style="margin-left: 13rem">2023</button>
+        <button class="cool_button" type="submit" name="submit_button" value="2024" style="margin-left: 17rem">2024</button>
+    </form>
+
+    <img class="center" src="{{ url_for('static',filename='Circle2.png') }}" style="position: absolute; width: 500px; height: 351px" alt="Circle">
+
+    <div class="center">
+        <div class="item html">
+        <svg width="700" height="700" xmlns="http://www.w3.org/2000/svg">
+            <g>
+          <circle class="circle_animation" r="140" cy="351" cx="351" stroke-width="49" stroke="rgba(0, 0, 0, 0.6)" fill="none"></circle>
+         </g>
+        </svg>
+        </div>
+    </div>
+
+    <div class="center doughnut">
+        <div class="center doughnut2"></div>
+    </div>
+
+    <div class="center" style="background: linear-gradient(#DC25FA 50%, #9947F7 64%); border-radius: 100%; width: 250px; height: 250px">
+        <div class="center" style="background: rgba(0,0,0,0.6); border-radius: 100%; width: 251px; height: 251px">
+
+        </div>
+    </div>
+
+    <div class="line" style="left: 39.8vw; top: 36vh; transform: rotate(53deg); width: 9.5vw"></div>
+    <div class="line" style="left: 37vw; top: 58vh; transform: rotate(-23deg); width: 11vw"></div>
+    <div class="line" style="left: 48.5vw; top: 32vh; transform: rotate(125deg); width: 13vw"></div>
+    <div class="line" style="left: 52vw; top: 46vh; transform: rotate(163deg); width: 11vw"></div>
+    <div class="line" style="left: 50vw; top: 61vh; transform: rotate(208deg); width: 17vw"></div>
+    <div class="line" style="left: 46.3vw; top: 66vh; transform: rotate(260deg); width: 10vw"></div>
+
+
+    <div class="center" style="background: linear-gradient(#DC25FA 50%, #9947F7 64%); border-radius: 100%; width: 180px; height: 180px">
+        <div class="center" style="background: black; border-radius: 100%; width: 120px; height: 120px">
+            <div class="center"><h2>{{ income_achieved }}</h2></div>
+            <div class="center" style="top: 65%; width: 10vw"><a class="center" style="font-size: 10px">Income Achieved</a></div>
+        </div>
+    </div>
+
+    <div class="line_perc" style="left: 34vw; top: 21vh; transform: rotate(24deg); width: 5vw"></div>
+    <div class="line_perc" style="left: 54vw; top: 16vh; transform: rotate(24deg); width: 5vw"></div>
+    <div class="line_perc" style="left: {{ 64 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 38 * (1 + income_source_perc['Advertising']/100/12) }}vh; background: linear-gradient(270deg, #100D83 15%, #7417BD 50%, #9BF8F2 78%); transform: rotate(150deg); width: 5vw"></div>
+    <div class="line_perc" style="left: 68.9vw; top: 70vh; background: linear-gradient(270deg, #100D83 15%, #7417BD 50%, #9BF8F2 78%); transform: rotate(170deg); width: 5vw"></div>
+    <div class="line_perc" style="left: 51.5vw; top: 82vh; background: linear-gradient(270deg, #100D83 35%, #9BF8F2 78%); transform: rotate(270deg); width: 2vw"></div>
+    <div class="line_perc" style="left: 33.5vw; top: 67vh; transform: rotate(-70deg); background: linear-gradient(270deg,  #7417BD 35%, #9BF8F2 78%); width: 2vw"></div>
+
+    <div class="circle_value" style="top: 74vh; left: 50.7vw; width: {{ 2.7 * (1 + income_source_perc['Renting']/100*4) }}vw; height: {{ 5 * (1 + income_source_perc['Renting']/100*4) }}vh; background: linear-gradient(120deg,  #7417BD 5%, #100D83 86%)">
+
+    </div>
+    <div class="circle_value" style="top: 66.5vh; left: 64.7vw; width: {{ 2.7 * (1 + income_source_perc['Subscription']/100*4) }}vw; height: {{ 5 * (1 + income_source_perc['Subscription']/100*4) }}vh">
+
+    </div>
+    <div class="circle_value" style="top: 38vh; left: 61.5vw; width: {{ 2.7 * (1 + income_source_perc['Advertising']/100*4) }}vw; height: {{ 5 * (1 + income_source_perc['Advertising']/100*4) }}vh">
+
+    </div>
+    <div class="circle_value" style="top: 16.5vh; left: 57.7vw; width: {{ 2.7 * (1 + income_source_perc['Asset sale']/100*4) }}vw; height: {{ 5 * (1 + income_source_perc['Asset sale']/100*4) }}vh">
+
+    </div>
+    <div class="circle_value" style="top: 21vh; left: 38vw; width: {{ 2.7 * (1 + income_source_perc['Licensing']/100*4) }}vw; height: {{ 5 * (1 + income_source_perc['Licensing']/100*4) }}vh">
+
+    </div>
+    <div class="circle_value" style="top: 58vh; left: 34vw; width: {{ 2.7 * (1 + income_source_perc['Usage fees']/100*4) }}vw; height: {{ 5 * (1 + income_source_perc['Usage fees']/100*4) }}vh;; background: linear-gradient(70deg,  #7417BD 5%, #100D83 86%)">
+
+    </div>
+
+    <div class="line" style="left: {{ 65.7 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 31 * (1 + income_source_perc['Advertising']/100/12) }}vh; transform: rotate(63deg); background: rgba(68, 65, 65, 0.6); width: 4vw"></div>
+    <div class="line" style="left: {{ 68.7 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 30 * (1 + income_source_perc['Advertising']/100/12) }}vh; transform: rotate(125deg); background: rgba(68, 65, 65, 0.6); width: 4vw"></div>
+    <div class="line" style="left: {{ 70 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 35 * (1 + income_source_perc['Advertising']/100/12) }}vh; transform: rotate(170deg); background: rgba(68, 65, 65, 0.6); width: 4vw"></div>
+    <div class="line" style="left: {{ 69.7 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 38 * (1 + income_source_perc['Advertising']/100/12) }}vh; transform: rotate(215deg); background: rgba(68, 65, 65, 0.6); width: 3vw"></div>
+    <div class="line" style="left: {{ 67.5 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 41 * (1 + income_source_perc['Advertising']/100/12) }}vh; transform: rotate(260deg); background: rgba(68, 65, 65, 0.6); width: 4vw"></div>
+
+    <div class="circle_perc_small" style="left: {{ 66 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 26 * (1 + income_source_perc['Advertising']/100/12) }}vh;"></div>
+    <div class="circle_perc_small" style="left: {{ 71 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 24 * (1 + income_source_perc['Advertising']/100/12) }}vh;"></div>
+    <div class="circle_perc_small" style="left: {{ 73.5 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 32 * (1 + income_source_perc['Advertising']/100/12) }}vh;"></div>
+    <div class="circle_perc_small" style="left: {{ 72 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 38.5 * (1 + income_source_perc['Advertising']/100/12) }}vh;"></div>
+    <div class="circle_perc_small" style="left: {{ 68.8 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 43 * (1 + income_source_perc['Advertising']/100/12) }}vh;"></div>
+
+    <div class="circle_perc" style="left: 32vw; top: 16vh"></div>
+    <div class="circle_perc" style="left: 51.8vw; top: 10.7vh"></div>
+    <div class="circle_perc" style="left: {{ 68 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 33* (1 + income_source_perc['Advertising']/100/12) }}vh"></div>
+    <div class="circle_perc" style="left: 73.5vw; top: 66.5vh"></div>
+    <div class="circle_perc" style="left: 51.2vw; top: 83vh"></div>
+    <div class="circle_perc" style="left: 32.5vw; top: 68vh"></div>
+
+
+
+
+{% endblock %}
