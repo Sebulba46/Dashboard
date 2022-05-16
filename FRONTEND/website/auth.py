@@ -14,6 +14,20 @@ def db_auth():
     return connect.cursor()
 
 
+def add_comma(num: int) -> str:
+    new_num = ''
+    num = str(num)
+    count = 1
+    for s, j in zip(range(len(num)), num[::-1]):
+        if count % 4 == 0:
+            new_num += ',' + j
+        else:
+            new_num += j
+        count += 1
+
+    return new_num[::-1]
+
+
 @auth.route('/', methods=['GET', 'POST'])
 def d_2020():
     if request.method != 'POST':
@@ -76,6 +90,7 @@ def d_2020():
         breakdowns_value[breakdown] = round(income_from_breakdown)
         breakdowns_perc[breakdown] = round(income_from_breakdown / total_income * 100)
 
+    quantity_value = dict()
     quantity_perc = dict()
     for income_source in ('Advertising', 'Asset sale', 'Licensing', 'Renting', 'Subscription', 'Usage fees'):
         cursor.execute('''
@@ -85,7 +100,20 @@ def d_2020():
             and [Income sources] = ?
         ''', total_quantity, year, income_source)
 
-        quantity_perc[income_source] = int(cursor.fetchone()[0])
+        perc = int(cursor.fetchone()[0])
+
+        quantity_perc[income_source] = str(perc)
+
+        cursor.execute('''
+            select sum(Counts)
+            from [Financial Statistics]
+            where [Income sources] = ?
+            and Year = ?
+        ''', income_source, year)
+
+        val = cursor.fetchone()[0]
+
+        quantity_value[income_source] = str(round(val))
 
     cursor.execute('''
         select sum([Target Income])
@@ -147,8 +175,14 @@ def d_2020():
     total_b2c = int(cursor.fetchone()[0])
     b2c_perc = round(total_b2c / total_income * 100, 2)
 
-    return render_template("Income Sources 2020.html", income_achieved=income_achieved, total_income=total_income,
-                           total_quantity=total_quantity, income_source_value=income_source_value,
+    total_income_comm = add_comma(total_income)
+    target_income_comm = add_comma(target_income)
+    for key, value in zip(quantity_value.keys(), quantity_value.values()):
+        quantity_value[key] = add_comma(value)
+
+    return render_template("Income Sources 2020.html", target_income_comm=target_income_comm, total_income_comm=total_income_comm, income_achieved=income_achieved, total_income=total_income,
+                           total_quantity=total_quantity, quantity_value=quantity_value,
+                           income_source_value=income_source_value,
                            income_source_perc=income_source_perc, breakdowns_value=breakdowns_value,
                            breakdowns_perc=breakdowns_perc, quantity_perc=quantity_perc,
                            target_income=target_income,

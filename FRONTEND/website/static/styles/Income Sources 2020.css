@@ -48,6 +48,7 @@
     height: 3px;
     width: 600px;
     background: linear-gradient(270deg, #7417BD 5%, #100D83 40%, #9BF8F2 69%);
+    transition: all 1s ease-out;
 }
 
 .circle_value {
@@ -56,6 +57,12 @@
     background: linear-gradient(80deg,  #7417BD 5%, #100D83 86%);
     width: 3.4vw;
     height: 6vh;
+    transition: all 1s ease-out;
+    color: white;
+    text-align: center;
+    font-size: 1.5vh;
+    margin-bottom: -0.5rem;
+    white-space: nowrap;
 }
 
 .circle_perc {
@@ -65,6 +72,10 @@
     height: 5vh;
     border: 0.4vh solid #9BF8F2;
     background: black;
+    transition: all 1s ease-out;
+    color: white;
+    text-align: center;
+    font-size: 2.2vh;
 }
 
 .circle_perc_small {
@@ -73,6 +84,10 @@
     width: 2vw;
     height: 4vh;
     background: rgba(68, 65, 65);
+    transition: all 1s ease-out;
+    color: white;
+    font-size: 1vh;
+    text-align: center;
 }
 
 @keyframes css {
@@ -106,7 +121,48 @@
   text-shadow: 0 0 4px #ea4c89;
 }
 
- @media screen and (max-width: 1200px) {
+.blue_box {
+    width: 9vw;
+    position: absolute;
+    height: 5vh;
+    border-radius: 25px;
+    background: blue;
+    color: white;
+    font-size: 2.3vh;
+    left: 1vw;
+    top: 17vh;
+    text-align: center;
+    white-space: nowrap;
+}
 
- }
+.dot {
+    width: 0.3vw;
+    height: 0.8vh;
+    border-radius: 100%;
+    background: red;
+    position: relative;
+    margin-bottom: 1.27rem;
+}
+
+.dots {
+    width: 2vw;
+    height: 10vh;
+    position: absolute;
+}
+
+.quantity {
+    width: 14.5vw;
+    height: 30vh;
+    position: absolute;
+}
+
+#area-example-15 {
+    left: -40vw;
+    z-index:10;
+    top: 60vh;
+    height: 11vh;
+    max-width: 17vw;
+    font-size: 1vh;
+    color: white;
+}
 
