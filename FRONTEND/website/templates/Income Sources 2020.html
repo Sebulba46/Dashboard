@@ -8,7 +8,7 @@
             position: relative;
             float: left;
         }
-        svg {
+        svg.p {
             -webkit-transform: rotate(90deg);
             transform: scale(1, -1) rotate(90deg);
         }
@@ -28,6 +28,9 @@
             stroke-dashoffset: {{ 879.64594*(income_achieved/100) }};
           }
         }
+        circle.b {
+            stroke-dasharray: {{ b2b_perc }} 100;
+        }
     </style>
 </head>
 
@@ -37,68 +40,122 @@
 
     <p style="position: absolute; color: white; top: 23vh; left: 1vw; width: 18vw; font-size: 1.8vh">Grand total of income, and their breakdowns showing the achievements percentage and highlight for most valuable source, Marketing strategies, and operating profit.</p>
 
-    <form method="post" style="position: absolute; left: 1vw; top: 40vh; width: 18vw; height: 60px">
-        <button class="cool_button" type="submit" name="submit_button" value="2020">2020</button>
-        <button class="cool_button" type="submit" name="submit_button" value="2021">2021</button>
-        <button class="cool_button" type="submit" name="submit_button" value="2022">2022</button>
-        <button class="cool_button" type="submit" name="submit_button" value="2023">2023</button>
-        <button class="cool_button" type="submit" name="submit_button" value="2024">2024</button>
+    <form method="post" style="position: absolute; left: 1vw; top: 40vh; width: 19vw; height: 5vh">
+        <button class="cool_button" type="submit" name="submit_button" style="background: {{ background[year == 2020] }}; color: {{ colors[year == 2020] }}" value="2020">2020</button>
+        <button class="cool_button" type="submit" name="submit_button" style="background: {{ background[year == 2021] }}; color: {{ colors[year == 2021] }}" value="2021">2021</button>
+        <button class="cool_button" type="submit" name="submit_button" style="background: {{ background[year == 2022] }}; color: {{ colors[year == 2022] }}" value="2022">2022</button>
+        <button class="cool_button" type="submit" name="submit_button" style="background: {{ background[year == 2023] }}; color: {{ colors[year == 2023] }}" value="2023">2023</button>
+        <button class="cool_button" type="submit" name="submit_button" style="background: {{ background[year == 2024] }}; color: {{ colors[year == 2024] }}" value="2024">2024</button>
     </form>
 
     <a style="position: absolute; color: white; left: 2vw; top: 47vh; font-size: 4vh">Financial Statistics</a>
     <a style="position: absolute; color: white; left: 2vw; top: 50vh; font-size: 8vh">{{ total_income_comm }}</a>
     <a style="position: absolute; color: white; left: 2vw; top: 60vh; font-size: 2.5vh">{{ 'Income Target' + "&nbsp;"|safe*2 + target_income_comm }}</a>
 
-    <table id="area-example-15" class="charts-css area multiple hide-data show-labels">
+    <table id="graph area" class="charts-css area multiple hide-data show-labels">
         <caption>Month income</caption>
         <tbody>
             <tr>
               <th scope="row">Jan</th>
-              <td style="--start:{{ ((monthly_income['Jan'] - 60000)/20000)|pprint }}; --size:{{ (monthly_income['Feb'] - 60000)/20000 }};"><span class="data"> 20 </span></td>
+              <td style="--start:{{ ((monthly_income['Jan'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000) }}; --size:{{ (monthly_income['Feb'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 20 </span></td>
             </tr>
             <tr>
               <th scope="row">Feb</th>
-              <td style="--start:{{ (monthly_income['Feb'] - 60000)/20000 }}; --size:{{ (monthly_income['Mar'] - 60000)/20000 }};"><span class="data"> 80 </span></td>
+              <td style="--start:{{ (monthly_income['Feb'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Mar'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 80 </span></td>
             </tr>
             <tr>
               <th scope="row">Mar</th>
-              <td style="--start:1; --size:0.4;"><span class="data"> 40 </span></td>
+              <td style="--start:{{ (monthly_income['Mar'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Apr'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
             </tr>
             <tr>
               <th scope="row">Apr</th>
-              <td style="--start:0.8; --size:0.4;"><span class="data"> 40 </span></td>
+              <td style="--start:{{ (monthly_income['Apr'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['May'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
             </tr>
             <tr>
               <th scope="row">May</th>
-              <td style="--start:0.8; --size:0.4;"><span class="data"> 40 </span></td>
+              <td style="--start:{{ (monthly_income['May'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Jun'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
             </tr>
             <tr>
               <th scope="row">Jun</th>
-              <td style="--start:0.8; --size:0.4;"><span class="data"> 40 </span></td>
+              <td style="--start:{{ (monthly_income['Jun'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Jul'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
             </tr>
             <tr>
               <th scope="row">Jul</th>
-              <td style="--start:0.8; --size:0.4;"><span class="data"> 40 </span></td>
+              <td style="--start:{{ (monthly_income['Jul'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Aug'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
             </tr>
             <tr>
               <th scope="row">Aug</th>
-              <td style="--start:0.8; --size:0.4;"><span class="data"> 40 </span></td>
+              <td style="--start:{{ (monthly_income['Aug'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Sep'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
             </tr>
             <tr>
               <th scope="row">Sep</th>
-              <td style="--start:0.8; --size:0.4;"><span class="data"> 40 </span></td>
+              <td style="--start:{{ (monthly_income['Sep'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Oct'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
             </tr>
             <tr>
               <th scope="row">Oct</th>
-              <td style="--start:0.8; --size:0.4;"><span class="data"> 40 </span></td>
+              <td style="--start:{{ (monthly_income['Oct'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Nov'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
             </tr>
             <tr>
               <th scope="row">Nov</th>
-              <td style="--start:0.8; --size:0.4;"><span class="data"> 40 </span></td>
+              <td style="--start:{{ (monthly_income['Nov'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Dec'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
             </tr>
             <tr>
               <th scope="row">Dec</th>
-              <td style="--start:0.8; --size:0.4;"><span class="data"> 40 </span></td>
+              <td style="--start:{{ (monthly_income['Dec'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Dec'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
+            </tr>
+          </tbody>
+    </table>
+
+    <table id="graph line" class="charts-css line multiple hide-data show-labels">
+        <caption>Month income</caption>
+        <tbody>
+            <tr>
+              <th scope="row">Jan</th>
+              <td style="--start:{{ ((monthly_income['Jan'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000) }}; --size:{{ (monthly_income['Feb'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 20 </span></td>
+            </tr>
+            <tr>
+              <th scope="row">Feb</th>
+              <td style="--start:{{ (monthly_income['Feb'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Mar'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 80 </span></td>
+            </tr>
+            <tr>
+              <th scope="row">Mar</th>
+              <td style="--start:{{ (monthly_income['Mar'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Apr'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
+            </tr>
+            <tr>
+              <th scope="row">Apr</th>
+              <td style="--start:{{ (monthly_income['Apr'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['May'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
+            </tr>
+            <tr>
+              <th scope="row">May</th>
+              <td style="--start:{{ (monthly_income['May'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Jun'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
+            </tr>
+            <tr>
+              <th scope="row">Jun</th>
+              <td style="--start:{{ (monthly_income['Jun'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Jul'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
+            </tr>
+            <tr>
+              <th scope="row">Jul</th>
+              <td style="--start:{{ (monthly_income['Jul'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Aug'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
+            </tr>
+            <tr>
+              <th scope="row">Aug</th>
+              <td style="--start:{{ (monthly_income['Aug'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Sep'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
+            </tr>
+            <tr>
+              <th scope="row">Sep</th>
+              <td style="--start:{{ (monthly_income['Sep'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Oct'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
+            </tr>
+            <tr>
+              <th scope="row">Oct</th>
+              <td style="--start:{{ (monthly_income['Oct'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Nov'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
+            </tr>
+            <tr>
+              <th scope="row">Nov</th>
+              <td style="--start:{{ (monthly_income['Nov'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Dec'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
+            </tr>
+            <tr>
+              <th scope="row">Dec</th>
+              <td style="--start:{{ (monthly_income['Dec'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }}; --size:{{ (monthly_income['Dec'] - (monthly_income.values()|sum/monthly_income.values()|length - 20000))/40000 }};"><span class="data"> 40 </span></td>
             </tr>
           </tbody>
     </table>
@@ -114,25 +171,20 @@
         <a style="position: relative; color: white; font-size: 2vh">{{ 'Asset sale' + "&nbsp;"|safe*17 + "&nbsp;"|safe*(3 - quantity_perc['Asset sale']|length) + quantity_perc['Asset sale'] + '%' + "&nbsp;"|safe*7 + "&nbsp;"|safe*(7 - quantity_value['Asset sale']|length) + quantity_value['Asset sale']}}</a>
     </div>
 
-    <div class="dots" style="left: 2vw; top: 79vh;">
+    <div class="dots" style="left: 2vw; top: 79.2vh;">
         <div class="dot"></div>
         <div class="dot"></div>
         <div class="dot"></div>
         <div class="dot"></div>
         <div class="dot"></div>
         <div class="dot"></div>
-    </div>
-
-    <div style="left: 2vw; top: 78vh">
-
-
     </div>
 
     <img class="center" src="{{ url_for('static',filename='Circle2.png') }}" style="position: absolute; width: 500px; height: 351px" alt="Circle">
 
     <div class="center">
         <div class="item html">
-        <svg width="700" height="700" xmlns="http://www.w3.org/2000/svg">
+        <svg class="p" width="700" height="700" xmlns="http://www.w3.org/2000/svg">
             <g>
           <circle class="circle_animation" r="140" cy="351" cx="351" stroke-width="49" stroke="rgba(0, 0, 0, 0.8)" fill="none"></circle>
          </g>
@@ -159,9 +211,10 @@
 
 
     <div class="center" style="background: linear-gradient(#DC25FA 50%, #9947F7 64%); border-radius: 100%; width: 180px; height: 180px">
-        <div class="center" style="background: black; border-radius: 100%; width: 120px; height: 120px">
+        <div class="center" style="background: black; border-radius: 100%; width: 120px; height: 120px; align-content: center">
+            <img class="center" style="position: relative; top: 20%; height: 20%" src="{{ url_for('static',filename='Money.png') }}" alt="dfds">
             <div class="center"><h2>{{ income_achieved|string + '%' }}</h2></div>
-            <div class="center" style="top: 65%; width: 10vw"><a class="center" style="font-size: 10px">Income Achieved</a></div>
+            <div class="center" style="top: 65%; width: 15vw"><a class="center" style="font-size: 1.1vh">Income Achieved</a></div>
         </div>
     </div>
 
@@ -173,26 +226,32 @@
     <div class="line_perc" style="left: 33.5vw; top: 67vh; transform: rotate(-70deg); background: linear-gradient(270deg,  #7417BD 35%, #9BF8F2 78%); width: 2vw"></div>
 
     <div class="circle_value" style="top: 74vh; left: 50.7vw; width: {{ 2.7 * (1 + income_source_perc['Renting']/100*4) }}vw; height: {{ 5 * (1 + income_source_perc['Renting']/100*4) }}vh; background: linear-gradient(120deg,  #7417BD 5%, #100D83 86%)">
+        <div class="{{ 'inner' * (income_value_max == 'Renting') }}" style="width: 100%; height: 100%"></div>
         <div class="center" style="top:40%">{{ income_source_value['Renting']|string}}</div>
         <div class="center" style="top:60%">Renting</div>
     </div>
     <div class="circle_value" style="top: 66.5vh; left: 64.7vw; width: {{ 2.7 * (1 + income_source_perc['Subscription']/100*4) }}vw; height: {{ 5 * (1 + income_source_perc['Subscription']/100*4) }}vh">
+        <div class="{{ 'inner' * (income_value_max == 'Subscription') }}" style="width: 100%; height: 100%"></div>
         <div class="center" style="top:40%">{{ income_source_value['Subscription']|string}}</div>
         <div class="center" style="top: 60%">Subscription</div>
     </div>
     <div class="circle_value" style="top: 38vh; left: 61.5vw; width: {{ 2.7 * (1 + income_source_perc['Advertising']/100*4) }}vw; height: {{ 5 * (1 + income_source_perc['Advertising']/100*4) }}vh">
+        <div class="{{ 'inner' * (income_value_max == 'Advertising') }}" style="width: 100%; height: 100%"></div>
         <div class="center" style="top:40%">{{ income_source_value['Advertising']|string}}</div>
         <div class="center" style="top: 60%">Advertising</div>
     </div>
     <div class="circle_value" style="top: 16.5vh; left: 57.7vw; width: {{ 2.7 * (1 + income_source_perc['Asset sale']/100*4) }}vw; height: {{ 5 * (1 + income_source_perc['Asset sale']/100*4) }}vh">
+        <div class="{{ 'inner' * (income_value_max == 'Asset sale') }}" style="width: 100%; height: 100%"></div>
         <div class="center" style="top:40%">{{ income_source_value['Asset sale']|string}}</div>
         <div class="center" style="top: 60%">Asset sale</div>
     </div>
     <div class="circle_value" style="top: 21vh; left: 38vw; width: {{ 2.7 * (1 + income_source_perc['Licensing']/100*4) }}vw; height: {{ 5 * (1 + income_source_perc['Licensing']/100*4) }}vh">
+        <div class="{{ 'inner' * (income_value_max == 'Licensing') }}" style="width: 100%; height: 100%"></div>
         <div class="center" style="top:40%">{{ income_source_value['Licensing']|string}}</div>
         <div class="center" style="top: 60%">Licensing</div>
     </div>
     <div class="circle_value" style="top: 58vh; left: 34vw; width: {{ 2.7 * (1 + income_source_perc['Usage fees']/100*4) }}vw; height: {{ 5 * (1 + income_source_perc['Usage fees']/100*4) }}vh;; background: linear-gradient(70deg,  #7417BD 5%, #100D83 86%)">
+        <div class="{{ 'inner' * (income_value_max == 'Usage fees') }}" style="width: 100%; height: 100%"></div>
         <div class="center" style="top:40%">{{ income_source_value['Usage fees']|string}}</div>
         <div class="center" style="top: 60%">Usage fees</div>
     </div>
@@ -207,6 +266,14 @@
     <div class="line" style="left: 30vw; top: 22vh; transform: rotate(-30deg); background: rgba(68, 65, 65, 0.6); width: 3vw"></div>
 
     <div class="line" style="left: 29vw; top: 73vh; transform: rotate(-35deg); background: rgba(68, 65, 65, 0.6); width: 4vw"></div>
+    <div class="line" style="left: 31vw; top: 75vh; transform: rotate(-80deg); background: rgba(68, 65, 65, 0.6); width: 4vw"></div>
+
+    <div class="line" style="left: 48vw; top: 89vh; transform: rotate(-30deg); background: rgba(68, 65, 65, 0.6); width: 4vw"></div>
+    <div class="line" style="left: 51.5vw; top: 89vh; transform: rotate(-90deg); background: rgba(68, 65, 65, 0.6); width: 2vw"></div>
+    <div class="line" style="left: 53vw; top: 89vh; transform: rotate(30deg); background: rgba(68, 65, 65, 0.6); width: 4vw"></div>
+
+    <div class="line" style="left: 73.5vw; top: 74vh; transform: rotate(70deg); background: rgba(68, 65, 65, 0.6); width: 4vw"></div>
+    <div class="line" style="left: 76vw; top: 71vh; transform: rotate(20deg); background: rgba(68, 65, 65, 0.6); width: 4vw"></div>
 
     <div class="circle_perc" style="left: 32vw; top: 16vh">
         <div class="center">{{ income_source_perc['Licensing']|string + '%' }}</div>
@@ -227,12 +294,83 @@
         <div class="center">{{ income_source_perc['Usage fees']|string + '%' }}</div>
     </div>
 
-    <div class="circle_perc_small" style="left: {{ 66 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 26 * (1 + income_source_perc['Advertising']/100/12) }}vh;"></div>
-    <div class="circle_perc_small" style="left: {{ 71 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 24 * (1 + income_source_perc['Advertising']/100/12) }}vh;"></div>
-    <div class="circle_perc_small" style="left: {{ 73.5 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 32 * (1 + income_source_perc['Advertising']/100/12) }}vh;"></div>
-    <div class="circle_perc_small" style="left: {{ 72 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 38.5 * (1 + income_source_perc['Advertising']/100/12) }}vh;"></div>
-    <div class="circle_perc_small" style="left: {{ 68.8 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 43 * (1 + income_source_perc['Advertising']/100/12) }}vh;"></div>
+    <div class="circle_perc_small" style="left: {{ 66 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 26 * (1 + income_source_perc['Advertising']/100/12) }}vh;"><div class="center">{{ breakdowns_perc['Television Ad']|string + '%' }}</div></div>
+    <div class="circle_perc_small" style="left: {{ 71 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 24 * (1 + income_source_perc['Advertising']/100/12) }}vh;"><div class="center">{{ breakdowns_perc['Company Website']|string + '%' }}</div></div>
+    <div class="circle_perc_small" style="left: {{ 73.5 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 32 * (1 + income_source_perc['Advertising']/100/12) }}vh;"><div class="center">{{ breakdowns_perc['Facebook Page']|string + '%' }}</div></div>
+    <div class="circle_perc_small" style="left: {{ 72 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 38.5 * (1 + income_source_perc['Advertising']/100/12) }}vh;"><div class="center">{{ breakdowns_perc['Google Ad']|string + '%' }}</div></div>
+    <div class="circle_perc_small" style="left: {{ 68.8 * (1 + income_source_perc['Advertising']/100/9) }}vw; top: {{ 43 * (1 + income_source_perc['Advertising']/100/12) }}vh;"><div class="center">{{ breakdowns_perc['Youtube Channel']|string + '%' }}</div></div>
 
+    <div class="circle_perc_small" style="left: 28vw; top: 11.5vh"><div class="center">{{ breakdowns_perc['Floating License']|string + '%' }}</div></div>
+    <div class="circle_perc_small" style="left: 29vw; top: 22vh"><div class="center">{{ breakdowns_perc['Software Metered License']|string + '%' }}</div></div>
+
+    <div class="circle_perc_small" style="left: 28vw; top: 74vh"><div class="center">{{ breakdowns_perc['New ']|string + '%' }}</div></div>
+    <div class="circle_perc_small" style="left: 31.6vw; top: 77vh"><div class="center">{{ breakdowns_perc['Renewal']|string + '%' }}</div></div>
+
+    <div class="circle_perc_small" style="left: 47vw; top: 90vh"><div class="center">{{ breakdowns_perc['Offices']|string + '%' }}</div></div>
+    <div class="circle_perc_small" style="left: 51.5vw; top: 90vh"><div class="center">{{ breakdowns_perc['Lands']|string + '%' }}</div></div>
+    <div class="circle_perc_small" style="left: 55.8vw; top: 90vh"><div class="center">{{ breakdowns_perc['Equipments']|string + '%' }}</div></div>
+
+    <div class="circle_perc_small" style="left: 75.5vw; top: 77vh"><div class="center">{{ breakdowns_perc['Prime']|string + '%' }}</div></div>
+    <div class="circle_perc_small" style="left: 79.5vw; top: 71vh"><div class="center">{{ breakdowns_perc['Premium']|string + '%' }}</div></div>
+
+    <p style="left: 23.7vw; top: 15.5vh; position: absolute; width: 7vw; height: 3vh; color: white; font-size: 1.5vh">Floating License {{ breakdowns_value['Floating License'] }}</p>
+    <p style="left: 27vw; top: 26.5vh; position: absolute; width: 7vw; height: 3vh; color: white; font-size: 1.5vh">Software Metered License <br>{{ breakdowns_value['Software Metered License'] }}</p>
+
+    <p style="left: 26vw; top: 76vh; position: absolute; width: 7vw; height: 3vh; color: white; font-size: 1.5vh">New <br>{{ breakdowns_value['New '] }}</p>
+    <p style="left: 34vw; top: 79vh; position: absolute; width: 7vw; height: 3vh; color: white; font-size: 1.5vh">Renewal<br>{{ breakdowns_value['Renewal'] }}</p>
+
+    <p style="left: 44vw; top: 91vh; position: absolute; width: 7vw; height: 3vh; color: white; font-size: 1.5vh">Offices<br>{{ breakdowns_value['Offices'] }}</p>
+    <p style="left: 51.5vw; top: 94vh; position: absolute; width: 7vw; height: 3vh; color: white; font-size: 1.5vh">Lands<br>{{ breakdowns_value['Lands'] }}</p>
+    <p style="left: 58.5vw; top: 90vh; position: absolute; width: 7vw; height: 3vh; color: white; font-size: 1.5vh">Equipments<br>{{ breakdowns_value['Equipments'] }}</p>
+
+    <p style="left: 73vw; top: 79vh; position: absolute; width: 7vw; height: 3vh; color: white; font-size: 1.5vh">Prime<br>{{ breakdowns_value['Prime'] }}</p>
+    <p style="left: 80vw; top: 65vh; position: absolute; width: 7vw; height: 3vh; color: white; font-size: 1.5vh">Premium<br>{{ breakdowns_value['Premium'] }}</p>
+
+    <p style="left: 65vw; top: 22vh; position: absolute; width: 7vw; height: 3vh; color: white; font-size: 1.5vh">Television Ad<br>{{ breakdowns_value['Television Ad'] }}</p>
+    <p style="left: 75.5vw; top: 24vh; position: absolute; width: 7vw; height: 3vh; color: white; font-size: 1.5vh">Company Website<br>{{ breakdowns_value['Company Website'] }}</p>
+    <p style="left: 78vw; top: 32.5vh; position: absolute; width: 7vw; height: 3vh; color: white; font-size: 1.5vh">Facebook Page<br>{{ breakdowns_value['Facebook Page'] }}</p>
+    <p style="left: 76vw; top: 43vh; position: absolute; width: 7vw; height: 3vh; color: white; font-size: 1.5vh">Google Ad<br>{{ breakdowns_value['Google Ad'] }}</p>
+    <p style="left: 71.5vw; top: 49vh; position: absolute; width: 7vw; height: 3vh; color: white; font-size: 1.5vh">Youtube Channel<br>{{ breakdowns_value['Youtube Channel'] }}</p>
+
+    <div class="side_bar" style="right: 1vw; top: 20vh; width: 5vw; height: 12vh">
+        <img style="position: relative; margin-top: 0.5rem; margin-left: 0.5rem; height: 20%" src="{{ url_for('static',filename='Avg.png') }}" alt="jopa">
+        <br>
+        <p style="font-size: 2.5vh; margin-left: 0.9vw; color: white; margin-bottom: -0.6vh">{{ avg_monthly_income }}</p>
+        <p style="font-size: 2vh; margin-left: 0.5vw; margin-bottom: -0.5vh; color: white">Average</p>
+        <p style="font-size: 1vh; margin-left: 0.5vw; color: white">Monthly Income</p>
+    </div>
+    <div class="side_bar" style="right: 1vw; top: 33.5vh; width: 5vw; height: 30vh; text-align: center">
+        <p style="font-size: 1vh; margin-bottom: -0.5vh; color: white">Operating</p>
+        <p style="font-size: 2vh; margin-bottom: -0.5vh; color: white">Profits</p>
+        <p style="margin-top: 22vh; color: white; font-size: 2vh">{{ total_profit }}</p>
+    </div>
+    <div class="side_bar" style="right: 1vw; top: 65vh; width: 5vw; height: 30vh; text-align: center; align-items: center">
+        <p style="font-size: 2.5vh; color: white; margin-bottom: -0.6vh">B2B</p>
+        <p style="font-size: 2vh; color: white; margin-bottom: -0.6vh">{{ total_b2b }}</p>
+        <p style="font-size: 2vh; color: white; margin-bottom: 1vh">{{ b2b_perc|string + '%' }}</p>
+        <div class="center">
+            <svg xmlns="http://www.w3.org/2000/svg" height="100" width="100">
+            <circle cx="50" cy="50" r="2.2vw" stroke="#060f28" stroke-width="0.1vw" fill="#9BF8F2"></circle>
+            <circle cx="50" cy="50" r="1.4vw" stroke="#060f28" stroke-width="0.1vw" fill="#060f28"></circle>
+            <circle class="bar b" cx="50" cy="50" r="1.8vw" stroke="#0000FFFF" stroke-width="0.8vw" fill="none" pathLength="100" transform="rotate(-90 50 50)"></circle>
+            <circle cx="50" cy="50" r="1.8vw" stroke="#060f28" stroke-width="0.1vw" fill="none"></circle>
+        </svg>
+        </div>
+        <p style="font-size: 2vh; color: white; margin-top: 11vh; margin-bottom: -0.6vh">{{ b2c_perc|string + '%' }}</p>
+        <p style="font-size: 2vh; color: white; margin-bottom: -0.6vh">{{ total_b2c }}</p>
+        <p style="font-size: 2.5vh; color: white; margin-bottom: -0.6vh">B2C</p>
+    </div>
+
+    <table id="profit-chart" class="charts-css bar show-labels data-spacing-4">
+              <tbody>
+              {% for month in monthly_profit.keys() %}
+                    <tr>
+                      <th scope="row">{{ month }}</th>
+                      <td style="--size:{{ (monthly_profit[month] - (monthly_profit.values()|sum/monthly_profit.values()|length - 2000))/4000 }};"></td>
+                    </tr>
+              {% endfor %}
+              </tbody>
+        </table>
 
 
 

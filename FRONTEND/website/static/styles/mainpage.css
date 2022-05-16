@@ -69,13 +69,14 @@
 
 .cool_button {
     position: relative;
-    width: 3rem;
-    height: 2rem;
+    width: 3.3vw;
+    height: 3.8vh;
     border-radius: 5px;
     background: #1D1D3A;
     color: white;
     text-align: center;
-    font-size: 2vh;
+    line-height: 50%;
+    font-size: 100%;
     margin-left: 0.005vw;
 }
 

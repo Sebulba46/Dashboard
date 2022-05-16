@@ -86,7 +86,7 @@
     background: rgba(68, 65, 65);
     transition: all 1s ease-out;
     color: white;
-    font-size: 1vh;
+    font-size: 100%;
     text-align: center;
 }
 
@@ -97,9 +97,9 @@
 }
 
 @-webkit-keyframes pulse {
-  0% { box-shadow:0 0 8px #ea4c89, inset 0 0 8px #ea4c89; }
-  50% { box-shadow:0 0 16px #ea4c89, inset 0 0 14px #ea4c89; }
-  100% { box-shadow:0 0 8px #ea4c89, inset 0 0 8px #ea4c89; }
+  0% { box-shadow:0 0 8px #d61059, inset 0 0 8px #d61059; }
+  50% { box-shadow:0 0 16px #d61059, inset 0 0 14px #d61059; }
+  100% { box-shadow:0 0 8px #d61059, inset 0 0 8px #d61059; }
 }
 
 .inner {
@@ -107,7 +107,7 @@
   width:300px;
   height:300px;
   border-radius:100%;
-  box-shadow: 0 0 8px #ea4c89, inset 0 0 8px #ea4c89;
+  box-shadow: 0 0 8px #d61059, inset 0 0 8px #d61059;
   -webkit-animation: pulse 2s linear 1s infinite;
 }
 .inner p {
@@ -117,12 +117,12 @@
   font-family:sans-serif;
   font-weight:100;
   font-size:24px;
-  color: #ea4c89;
-  text-shadow: 0 0 4px #ea4c89;
+  color: #d61059;
+  text-shadow: 0 0 4px #d61059;
 }
 
 .blue_box {
-    width: 9vw;
+    width: 10vw;
     position: absolute;
     height: 5vh;
     border-radius: 25px;
@@ -137,11 +137,11 @@
 
 .dot {
     width: 0.3vw;
-    height: 0.8vh;
+    height: 0.6vh;
     border-radius: 100%;
     background: red;
     position: relative;
-    margin-bottom: 1.27rem;
+    margin-bottom: 2.7vh;
 }
 
 .dots {
@@ -151,18 +151,50 @@
 }
 
 .quantity {
-    width: 14.5vw;
+    width: 17vw;
     height: 30vh;
     position: absolute;
 }
 
-#area-example-15 {
+#graph\ area {
     left: -40vw;
-    z-index:10;
+    z-index:9;
     top: 60vh;
     height: 11vh;
     max-width: 17vw;
     font-size: 1vh;
+    color: transparent;
+    --color: linear-gradient(blue, transparent);
+}
+
+#graph\ line {
+    left: -40vw;
+    z-index:10;
+    top: 49vh;
+    height: 11vh;
+    max-width: 17vw;
+    font-size: 1vh;
     color: white;
+    --color: blue;
+    background: transparent;
+}
+
+.side_bar {
+    position: absolute;
+    background: #060f28;
+    border-radius: 10px;
+}
+
+#profit-chart {
+    z-index: 10;
+    position: absolute;
+    color: white;
+    left: 94.5vw;
+    top: 40vh;
+    width: 3.5vw;
+    height: 17vh;
+    font-size: 1vh;
+    --color: linear-gradient(90deg, #9BF8F2, #7417BD);
+    --labels-size: 2vw;
 }
 

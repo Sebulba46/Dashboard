@@ -7,6 +7,11 @@
     <orderEntry type="jdk" jdkName="Python 3.10 (Dashboard)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="charts.css" level="application" />
+    <orderEntry type="library" name="charts.css" level="application" />
+    <orderEntry type="library" name="webfont" level="application" />
+    <orderEntry type="library" name="mdb-ui-kit" level="application" />
+    <orderEntry type="library" name="font-awesome" level="application" />
+    <orderEntry type="library" name="bootstrap" level="application" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Jinja2" />
