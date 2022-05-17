@@ -194,6 +194,9 @@ def d_2020():
     colors = ['white', 'black']
     background = ['#1D1D3A', 'white']
 
+    total_b2b = add_comma(total_b2c)
+    total_b2c = add_comma(total_b2c)
+
     return render_template("Income Sources 2020.html", income_value_max=income_value_max, year=year,
                            background=background, colors=colors, target_income_comm=target_income_comm,
                            total_income_comm=total_income_comm, income_achieved=income_achieved,
